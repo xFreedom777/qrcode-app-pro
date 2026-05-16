@@ -137,12 +137,14 @@ qrForm.addEventListener('submit', (e) => {
   const jsonString = JSON.stringify(dataObj, null, 2);
   jsonPreview.innerText = jsonString;
 
-  // Minified JSON string for QR Code payload
-  const qrPayload = JSON.stringify(dataObj);
+  // Use formatted JSON string for QR Code payload to match CodeSandbox
+  // Newlines (\n) act as tiny delays (Enter key) for the scanner, which prevents Shift-dropping issues.
+  const qrPayload = jsonString;
 
   QRCode.toCanvas(qrCanvas, qrPayload, {
-    width: 250,
+    width: 300,
     margin: 2,
+    errorCorrectionLevel: 'L',
     color: {
       dark: '#000000',
       light: '#ffffff'
