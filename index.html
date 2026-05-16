@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator Pro</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- LOGIN SECTION -->
+  <div id="login-section" class="container active">
+    <div class="login-box">
+      <h2>Welcome Back</h2>
+      <p>Please login to access the generator</p>
+      <form id="login-form">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter username" autocomplete="off" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn-primary">Login</button>
+        <div id="login-error" class="error-text"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- GENERATOR SECTION -->
+  <div id="generator-section" class="container">
+    <div class="header">
+      <h2>QR Code Generator</h2>
+      <button id="logout-btn" class="btn-secondary btn-sm">Logout</button>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="form-panel">
+        <form id="qr-form">
+          <div class="form-row">
+            <div class="input-group">
+              <label for="f_id">ID <span class="hint">(4 digits)</span></label>
+              <input type="text" id="f_id" maxlength="4" placeholder="0000" pattern="\d{4}" required>
+            </div>
+            <div class="input-group">
+              <label for="f_qty">QTY <span class="hint">(4 digits)</span></label>
+              <input type="text" id="f_qty" maxlength="4" placeholder="9999" pattern="\d{4}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="f_pos01">POSITION01(mm) <span class="hint">(4 digits)</span></label>
+              <input type="text" id="f_pos01" maxlength="4" placeholder="0000" pattern="\d{4}" required>
+            </div>
+            <div class="input-group">
+              <label for="f_pos02">POSITION02(mm) <span class="hint">(4 digits)</span></label>
+              <input type="text" id="f_pos02" maxlength="4" placeholder="0200" pattern="\d{4}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="f_pos03">POSITION03(mm) <span class="hint">(4 digits)</span></label>
+              <input type="text" id="f_pos03" maxlength="4" placeholder="1500" pattern="\d{4}" required>
+            </div>
+            <div class="input-group">
+              <label for="f_pos04">POSITION04(mm) <span class="hint">(4 digits)</span></label>
+              <input type="text" id="f_pos04" maxlength="4" placeholder="1880" pattern="\d{4}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label for="f_set01">SETPOINT01(BAR) <span class="hint">(000.00-999.99)</span></label>
+              <input type="text" id="f_set01" placeholder="060.00" required>
+            </div>
+            <div class="input-group">
+              <label for="f_set02">SETPOINT02(RESERVE) <span class="hint">(000.00-999.99)</span></label>
+              <input type="text" id="f_set02" placeholder="000.00" required>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="f_model">MODEL <span class="hint">(Max 64 chars)</span></label>
+            <input type="text" id="f_model" maxlength="64" placeholder="FTMC-46" required>
+          </div>
+
+          <button type="submit" class="btn-primary w-100 mt-3">Generate QR Code</button>
+        </form>
+      </div>
+
+      <div class="preview-panel">
+        <div class="qr-container">
+          <canvas id="qr-canvas"></canvas>
+          <div id="qr-placeholder">QR Code will appear here</div>
+        </div>
+        
+        <div class="json-preview-container">
+          <h3>Generated JSON</h3>
+          <pre id="json-preview">{}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
