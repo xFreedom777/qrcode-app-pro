@@ -11,6 +11,7 @@ const qrForm = document.getElementById('qr-form');
 const qrCanvas = document.getElementById('qr-canvas');
 const qrPlaceholder = document.getElementById('qr-placeholder');
 const jsonPreview = document.getElementById('json-preview');
+const printBtn = document.getElementById('print-btn');
 
 // Input fields
 const f_id = document.getElementById('f_id');
@@ -153,6 +154,11 @@ qrForm.addEventListener('submit', (e) => {
     } else {
       qrPlaceholder.style.display = 'none';
       qrCanvas.style.display = 'block';
+      printBtn.style.display = 'block';
     }
   });
+});
+
+printBtn.addEventListener('click', () => {
+  window.print();
 });
